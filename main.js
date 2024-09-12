@@ -1,7 +1,4 @@
-import './style.scss'
-import javascriptLogo from './javascript.svg'
-import viteLogo from '/vite.svg'
-import { setupCounter } from './counter.js'
-import { CardController } from "./src/CardController.js";
+import './src/styles/style.scss'
+import { CardController } from "./src/components/cards/CardController.js";
 
 CardController.init()

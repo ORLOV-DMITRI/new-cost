@@ -1,0 +1,285 @@
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+  color: rgb(9, 9, 11);
+  background-color: #fff;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  font-weight: 500;
+  color: #646cff;
+  text-decoration: inherit;
+}
+
+a:hover {
+  color: #535bf2;
+}
+
+body {
+  margin: 0;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+}
+
+.container {
+  margin: 0 auto;
+  padding: 0 30px;
+  max-width: 1550px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  @media (max-width: 540px) {
+    width: auto;
+    align-items: flex-start;
+  }
+}
+
+.cards {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  padding: 20px;
+
+  @media (max-width: 540px) {
+    padding: 20px 0 0 0;
+    gap: 10px;
+    width: 100%;
+  }
+
+
+}
+
+.card {
+  border-radius: 12px;
+  border: 1px solid rgb(228, 228, 231);
+  box-shadow: rgba(75, 130, 59, 0.97) 0px 0px 10px 1px;
+  display: flex;
+  flex-direction: column;
+  padding: 24px;
+  gap: 25px;
+  width: calc(50% - 65px);
+  cursor: pointer;
+  @media (max-width: 540px) {
+    gap: 15px;
+    width: 100%;
+  }
+}
+.card.selected {
+  width: 400px;
+  @media (max-width: 540px) {
+    width: 100%;
+  }
+}
+
+.card__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.card__name {
+  font-size: 20px;
+  font-weight: 500;
+  text-transform: uppercase;
+
+  @media (max-width: 540px) {
+    font-size: 16px;
+  }
+}
+
+.card__icon {
+  width: 26px;
+  height: 26px;
+  background-repeat: no-repeat;
+  background-size: contain;
+
+  @media (max-width: 540px) {
+    width: 16px;
+    height: 16px;
+  }
+  &.travel {
+    background-image: url("/plane.svg");
+  }
+
+  &.cash {
+    background-image: url("/coins.svg");
+  }
+
+  &.eat {
+    background-image: url("/cooking-pot.svg");
+  }
+
+  &.money {
+    background-image: url("/landmark.svg");
+  }
+}
+
+.card__total {
+  font-size: 24px;
+  font-weight: 700;
+  @media (max-width: 540px) {
+    font-size: 20px;
+  }
+}
+
+.card__body {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.card__days {
+  font-size: 20px;
+  font-weight: 700;
+  @media (max-width: 540px) {
+    font-size: 16px;
+  }
+}
+
+.choise {
+  opacity: 1;
+}
+
+.hide {
+
+}
+
+.card.selected {
+
+}
+
+.hidden {
+  display: none;
+}
+
+
+.center-card {
+  transform: translate(-50%, -50%);
+  transition: all 0.5s ease;
+  z-index: 10;
+}
+
+.back {
+  display: none;
+  transform: translate(-50%, -50%);
+  position: absolute;
+  top: 20%;
+  font-size: 16px;
+  font-weight: 500;
+  align-items: center;
+  gap: 5px;
+  cursor: pointer;
+
+  span {
+    background-image: url("/arrow-left.svg");
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 16px;
+    height: 16px;
+    display: inline-block;
+  }
+}
+
+.card__temp {
+  width: 100%;
+  height: 10px;
+  background-color: #5b5454;
+  border-radius: 12px;
+
+  @media (max-width: 540px) {
+    height: 6px;
+  }
+}
+
+.card__currentTemp {
+  width: 50%;
+  background-color: red;
+  height: 100%;
+  border-radius: 12px;
+}
+
+.card__actions {
+  margin-top: 10px;
+  display: none;
+  flex-direction: column;
+  align-items: center;
+}
+
+.card.selected .card__actions {
+  display: flex;
+
+}
+
+
+.input {
+  width: 100%;
+  border: 1px solid #1d1b1b;
+  color: #242424;
+  background-color: #fff;
+  border-radius: 6px;
+  padding: 8px 12px;
+  font-size: 14px;
+  font-weight: 400;
+  max-width: 390px;
+  height: 1.5rem;
+  transition: 0.3s;
+
+  &:focus-visible {
+    border: 1px solid #242424;
+  }
+
+  &::placeholder {
+    color: rgb(161, 161, 170);
+    opacity: 0.8;
+  }
+}
+
+.error {
+  bottom: -13px;
+  position: absolute;
+  color: #dd3434;
+  font-size: 10px;
+  font-weight: 400;
+  line-height: 120%;
+}
+
+.btns {
+  margin-top: 20px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  @media (max-width: 540px) {
+     flex-direction: column;
+    width: 100%;
+  }
+  button {
+    font-size: 14px;
+    line-height: 20px;
+    padding: 5px 24px 7px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    text-align: center;
+    font-weight: 600;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: 0.3s ease;
+    color: #fff;
+    background-color: black;
+    border: 2px solid transparent;
+
+    @media (max-width: 540px) {
+      width: 100%;
+    }
+  }
+}
