@@ -26,8 +26,11 @@ export const CardController ={
             const addBtn = card.querySelector('.add');
             const input = card.querySelector('input')
             addBtn.addEventListener('click', () => {
+                CardView.toggleLoader(true);
                 this.addMoney(card.id,+input.value)
                 input.value = ''
+                CardView.toggleLoader(false);
+
             });
         })
     },
@@ -36,17 +39,21 @@ export const CardController ={
             const removeBtn = card.querySelector('.remove');
             const input = card.querySelector('input')
             removeBtn.addEventListener('click', () => {
+                CardView.toggleLoader(true);
                 this.removeMoney(card.id,+input.value)
                 input.value = ''
+                CardView.toggleLoader(false);
+
             });
         })
     },
 
     async getWalletData() {
         try {
+            CardView.toggleLoader(true);
             const walletData = await CardModel.getWallet();
-            console.log(walletData)
-            this.updateWalletInfo(walletData)
+            this.updateWalletInfo(walletData);
+            CardView.toggleLoader(false)
         } catch (error) {
             console.error("Ошибка в контроллере (getWalletData):", error);
         }

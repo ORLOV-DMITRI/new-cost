@@ -1,6 +1,6 @@
 // CardModel.js
 export const CardModel = {
-    baseUrl: 'https://new-cost-server1.onrender.com',
+    baseUrl: 'https://orlov-finance.ru/new-cost',
     /**
      * Получение всех категорий кошелька с бэкенда
      * @returns {Promise<Object>} - Возвращает объект кошелька с категориями (Проезд, Еда, Личные деньги и Копилка)

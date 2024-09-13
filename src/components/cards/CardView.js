@@ -1,7 +1,10 @@
 export const CardView = {
     cards: document.querySelectorAll('.card'),
     backBtn: document.querySelector('.back'),
-
+    loader: document.querySelector('.loaderContainer'),
+    toggleLoader(active) {
+        this.loader.classList.toggle('active', active)
+    },
 
     renderDetailInfo(card) {
 
