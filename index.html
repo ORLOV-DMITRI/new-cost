@@ -1,28 +1,143 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/png" href="/favicon.png" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
+    <meta charset="UTF-8"/>
+    <link rel="icon" type="image/png" href="/favicon.png"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Расходы</title>
-  </head>
-  <body>
+</head>
+<body>
+
+<header class="header">
     <div class="container">
-        <div class="back">
-            <span></span>
-            Назад
+        <nav class="nav">
+            <button class="settings navBtn btn" id="f">Меню</button>
+            <button class="homeCategory navBtn btn" id="">Главная</button>
+            <button class="newCategory navBtn btn" id="add">Создать категорию</button>
+            <button class="allCategory navBtn btn" id="all">Все категории</button>
+        </nav>
+    </div>
+</header>
+<div class="container">
+    <div class="back">
+        <span></span>
+        Назад
+    </div>
+    <div class="loaderContainer">
+        <div class="loader"></div>
+    </div>
+    <div class="content">
+        <div class="createNew page">
+            <div class="createHead">
+                <h2>Создание категории</h2>
+                <div class="form-group">
+                    <label for="html">На главной</label>
+                    <input class="isFavorite" type="checkbox" id="html">
+                </div>
+            </div>
+
+            <form class="form" id="createForm">
+                <div class="fieldContainer">
+                    <div class="fieldBlock">
+                        <div class="field">
+                            <label for="name">Название</label>
+                            <input name="name" type="text" id="name" class="input" placeholder="Введите название" required>
+                        </div>
+                        <div class="field">
+                            <label for="money">Начальная сумма</label>
+                            <input name="money" type="number" value="0" id="money" class="input" min="0" required>
+                        </div>
+                    </div>
+                    <div class="fieldBlock chooseCheckboxes">
+                        <div class="field">
+                            <span>Включить автосписание?</span>
+                            <div class="radio-group">
+                                <label>
+                                    <input type="radio" name="autoDebit" value="true" class="radio">
+                                    <span>Да</span>
+                                </label>
+                                <label>
+                                    <input type="radio" name="autoDebit" value="false" class="radio" checked>
+                                    <span>Нет</span>
+                                </label>
+                            </div>
+                            <div class="sub-field disabled" id="autoDebitAmountField" >
+                                <label for="rate">Сумма списания</label>
+                                <input type="number" name="rate" value="0" id="rate" class="input" min="0">
+                            </div>
+                        </div>
+                        <div class="field">
+                            <span>Отслеживать прогресс в днях?</span>
+                            <div class="radio-group">
+                                <label>
+                                    <input type="radio" name="trackDay" value="true" class="radio">
+                                    <span>Да</span>
+                                </label>
+                                <label>
+                                    <input type="radio" name="trackDay" value="false" class="radio" checked>
+                                    <span>Нет</span>
+                                </label>
+                            </div>
+                            <div class="sub-field disabled" id="trackMaxField" >
+                                <label for="trackDayCount">Сумма в день</label>
+                                <input type="number" name="trackDayCount" value="0" id="trackDayCount" class="input" min="0">
+                            </div>
+                        </div>
+                        <div class="field">
+                            <span>Отслеживать прогресс накопления?</span>
+                            <div class="radio-group">
+                                <label>
+                                    <input type="radio" name="trackMoney" value="true" class="radio">
+                                    <span>Да</span>
+                                </label>
+                                <label>
+                                    <input type="radio" name="trackMoney" value="false" class="radio" checked>
+                                    <span>Нет</span>
+                                </label>
+                            </div>
+                            <div class="sub-field disabled" id="trackMaxField" >
+                                <label for="trackMoneyCount">Планируемая сумма</label>
+                                <input type="number" value="0" name="trackMoneyCount" id="trackMoneyCount" class="input" min="0">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn">Создать</button>
+            </form>
         </div>
-        <div class="loaderContainer">
-            <div class="loader"></div>
-        </div>
-        <div class="cards">
+
+
+        <div class="cards home page">
             <div class="card travel" id="travel">
                 <div class="card__head">
                     <div class="card__name">Проезд</div>
                     <div class="card__icon travel"></div>
                 </div>
                 <div class="card__body">
-                    <div class="card__total"><span>0</span> ₽ </div>
+                    <div class="card__total"><span>0</span> ₽</div>
+                    <div class="card__days">0</div>
+                </div>
+                <div class="card__temp">
+                    <div class="card__currentTemp"></div>
+                </div>
+                <div class="card__actions">
+                    <input type="number" class="input">
+                    <div class="btns">
+                        <button class="add">Добавить</button>
+                        <button class="remove">Отнять</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="cards all page">
+            <div class="card travel" id="travel">
+                <div class="card__head">
+                    <div class="card__name">Проезд</div>
+                    <div class="card__icon travel"></div>
+                </div>
+                <div class="card__body">
+                    <div class="card__total"><span>0</span> ₽</div>
                     <div class="card__days">0</div>
                 </div>
                 <div class="card__temp">
@@ -42,7 +157,7 @@
                     <div class="card__icon cash"></div>
                 </div>
                 <div class="card__body">
-                    <div class="card__total"><span>0</span> ₽ </div>
+                    <div class="card__total"><span>0</span> ₽</div>
                     <div class="card__days">0</div>
                 </div>
                 <div class="card__temp">
@@ -62,7 +177,7 @@
                     <div class="card__icon eat"></div>
                 </div>
                 <div class="card__body">
-                    <div class="card__total"><span>0</span> ₽ </div>
+                    <div class="card__total"><span>0</span> ₽</div>
                     <div class="card__days">0</div>
                 </div>
                 <div class="card__temp">
@@ -83,7 +198,7 @@
                     <div class="card__icon money"></div>
                 </div>
                 <div class="card__body">
-                    <div class="card__total"><span>0</span> ₽ </div>
+                    <div class="card__total"><span>0</span> ₽</div>
                 </div>
 
                 <div class="card__actions">
@@ -96,6 +211,8 @@
             </div>
         </div>
     </div>
-    <script type="module" src="/main.js"></script>
-  </body>
+
+</div>
+<script type="module" src="/main.js"></script>
+</body>
 </html>
