@@ -11,10 +11,11 @@
 <header class="header">
     <div class="container">
         <nav class="nav">
-            <button class="settings navBtn btn" id="f">Меню</button>
             <button class="homeCategory navBtn btn" id="">Главная</button>
             <button class="newCategory navBtn btn" id="add">Создать категорию</button>
             <button class="allCategory navBtn btn" id="all">Все категории</button>
+            <button class="settings navBtn btn active " id="auth">Войти</button>
+            <button class="logOut navBtn btn hidden">Выйти</button>
         </nav>
     </div>
 </header>
@@ -32,10 +33,9 @@
                 <h2>Создание категории</h2>
                 <div class="form-group">
                     <label for="html">На главной</label>
-                    <input class="isFavorite" type="checkbox" id="html">
+                    <input class="isFavorite" type="checkbox" id="html" name='favorite'>
                 </div>
             </div>
-
             <form class="form" id="createForm">
                 <div class="fieldContainer">
                     <div class="fieldBlock">
@@ -61,7 +61,7 @@
                                     <span>Нет</span>
                                 </label>
                             </div>
-                            <div class="sub-field disabled" id="autoDebitAmountField" >
+                            <div class="sub-field " id="autoDebitAmountField" >
                                 <label for="rate">Сумма списания</label>
                                 <input type="number" name="rate" value="0" id="rate" class="input" min="0">
                             </div>
@@ -78,7 +78,7 @@
                                     <span>Нет</span>
                                 </label>
                             </div>
-                            <div class="sub-field disabled" id="trackMaxField" >
+                            <div class="sub-field" id="trackMaxField" >
                                 <label for="trackDayCount">Сумма в день</label>
                                 <input type="number" name="trackDayCount" value="0" id="trackDayCount" class="input" min="0">
                             </div>
@@ -95,7 +95,7 @@
                                     <span>Нет</span>
                                 </label>
                             </div>
-                            <div class="sub-field disabled" id="trackMaxField" >
+                            <div class="sub-field " id="trackMaxField" >
                                 <label for="trackMoneyCount">Планируемая сумма</label>
                                 <input type="number" value="0" name="trackMoneyCount" id="trackMoneyCount" class="input" min="0">
                             </div>
@@ -103,11 +103,10 @@
                     </div>
                 </div>
 
-                <button type="submit" class="btn">Создать</button>
+                <button type="submit" class="btn create">Создать</button>
+                <button type="button" class="btn red delete">Удалить</button>
             </form>
         </div>
-
-
         <div class="cards home page">
             <div class="card travel" id="travel">
                 <div class="card__head">
@@ -131,84 +130,22 @@
             </div>
         </div>
         <div class="cards all page">
-            <div class="card travel" id="travel">
-                <div class="card__head">
-                    <div class="card__name">Проезд</div>
-                    <div class="card__icon travel"></div>
-                </div>
-                <div class="card__body">
-                    <div class="card__total"><span>0</span> ₽</div>
-                    <div class="card__days">0</div>
-                </div>
-                <div class="card__temp">
-                    <div class="card__currentTemp"></div>
-                </div>
-                <div class="card__actions">
-                    <input type="number" class="input">
-                    <div class="btns">
-                        <button class="add">Добавить</button>
-                        <button class="remove">Отнять</button>
+        </div>
+        <div class='logIn page'>
+            <h2>Вход</h2>
+            <form class="form" id="logInForm">
+                <div class="fieldContainer">
+                    <div class="field">
+                        <label for="email">Email</label>
+                        <input name="email" type="email" id="email" class="input" placeholder="Введите почту" required>
+                    </div>
+                    <div class="field">
+                        <label for="password">Пароль</label>
+                        <input name="password" type="password"  id="password" class="input" required>
                     </div>
                 </div>
-            </div>
-            <div class="card cash" id="cash">
-                <div class="card__head">
-                    <div class="card__name">Личные деньги</div>
-                    <div class="card__icon cash"></div>
-                </div>
-                <div class="card__body">
-                    <div class="card__total"><span>0</span> ₽</div>
-                    <div class="card__days">0</div>
-                </div>
-                <div class="card__temp">
-                    <div class="card__currentTemp"></div>
-                </div>
-                <div class="card__actions">
-                    <input type="number" class="input">
-                    <div class="btns">
-                        <button class="add">Добавить</button>
-                        <button class="remove">Отнять</button>
-                    </div>
-                </div>
-            </div>
-            <div class="card eat" id="eat">
-                <div class="card__head">
-                    <div class="card__name">Неделя</div>
-                    <div class="card__icon eat"></div>
-                </div>
-                <div class="card__body">
-                    <div class="card__total"><span>0</span> ₽</div>
-                    <div class="card__days">0</div>
-                </div>
-                <div class="card__temp">
-                    <div class="card__currentTemp"></div>
-                </div>
-
-                <div class="card__actions">
-                    <input type="number" class="input">
-                    <div class="btns">
-                        <button class="add">Добавить</button>
-                        <button class="remove">Отнять</button>
-                    </div>
-                </div>
-            </div>
-            <div class="card bank" id="bank">
-                <div class="card__head">
-                    <div class="card__name">Копилка</div>
-                    <div class="card__icon money"></div>
-                </div>
-                <div class="card__body">
-                    <div class="card__total"><span>0</span> ₽</div>
-                </div>
-
-                <div class="card__actions">
-                    <input type="number" class="input">
-                    <div class="btns">
-                        <button class="add">Добавить</button>
-                        <button class="remove">Отнять</button>
-                    </div>
-                </div>
-            </div>
+                <button type="submit" class="btn">Войти</button>
+            </form>
         </div>
     </div>
 

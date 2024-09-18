@@ -10,6 +10,24 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
+// Переменные цветов
+$primary-color: #007bff;
+$primary-color-hover: #0056b3;
+$background-color: #f2f2f2;
+$text-color: #333;
+$label-color: #555;
+$input-border-color: #ccc;
+$form-background-color: #fff;
+$box-shadow-color: rgba(0, 0, 0, 0.1);
+// Переменные цветов
+$primary-color: #007bff;
+$primary-color-hover: #0056b3;
+$background-color: #f2f2f2;
+$text-color: #333;
+$label-color: #555;
+$input-border-color: #ccc;
+$form-background-color: #fff;
+$box-shadow-color: rgba(0, 0, 0, 0.1);
 
 a {
     font-weight: 500;
@@ -25,6 +43,7 @@ body {
     margin: 0;
     height: 100vh;
     width: 100vw;
+    overflow-x:hidden ;
 }
 .page {
     padding-bottom: 130px !important;
@@ -60,11 +79,11 @@ body {
 .card {
     border-radius: 12px;
     border: 1px solid rgb(228, 228, 231);
-    box-shadow: rgba(75, 130, 59, 0.97) 0px 0px 10px 1px;
+    box-shadow: #0056b3 0px 0px 1px 1px;
     display: flex;
     flex-direction: column;
     padding: 24px;
-    gap: 25px;
+    gap: 0px;
     width: calc(50% - 65px);
     cursor: pointer;
     @media (max-width: 540px) {
@@ -108,6 +127,9 @@ body {
     &.travel {
         background-image: url("/plane.svg");
     }
+    &.delete {
+        background-image: url("/x.svg");
+    }
     
     &.cash {
         background-image: url("/coins.svg");
@@ -123,17 +145,23 @@ body {
 }
 
 .card__total {
-    font-size: 24px;
+    font-size: 30px;
     font-weight: 700;
+    color: $primary-color;
     @media (max-width: 540px) {
         font-size: 20px;
     }
+}
+.card__total.track {
+    color: #333333;
 }
 
 .card__body {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    margin-top: 20px;
+    margin-bottom: 5px;
 }
 
 .card__days {
@@ -321,18 +349,9 @@ body {
 }
 
 
-// Переменные цветов
-$primary-color: #007bff;
-$primary-color-hover: #0056b3;
-$background-color: #f2f2f2;
-$text-color: #333;
-$label-color: #555;
-$input-border-color: #ccc;
-$form-background-color: #fff;
-$box-shadow-color: rgba(0, 0, 0, 0.1);
 
 
-.createNew.page {
+.page {
     width: 100%;
     max-width: 1000px;
     background-color: $form-background-color;
@@ -472,9 +491,16 @@ span {
     @media (max-width: 1000px) {
     }
 }
+.btn.red {
+    margin-top: 20px;
+    background-color: red;
+}
 
-.btn:hover {
+.btn:not(.red):hover {
     background-color: $primary-color-hover;
+}
+.btn.red:hover {
+    opacity: 0.8;
 }
 .fieldContainer {
     display: flex;
@@ -582,6 +608,18 @@ span {
 
     }
 }
+.navBtn.active {
+    background-color: #fff;
+    border: 1px solid $primary-color;
+    color: $primary-color;
+    
+    @media (max-width: 1000px) {
+        background-color: transparent;
+        border: none;
+        color: white;
+    }
+}
+
 .allCategory.btn {
     @media (max-width: 1000px) {
 
@@ -591,10 +629,19 @@ span {
 }
 .settings.btn {
     @media (max-width: 1000px) {
-
-        background-image: url("/menu.svg");
+        background-image: url("/key-round.svg");
 
     }
+}
+.logOut.btn {
+    @media (max-width: 1000px) {
+        background-image: url("/log-out.svg");
+
+    }
+}
+
+.hidden {
+    display: none;
 }
 .createHead {
     display: flex;
@@ -605,7 +652,9 @@ span {
         flex-direction: column;
     }
 }
-
+.logIn {
+    position: relative;
+}
 .form-group {
     display: flex;
     gap: 2px;
@@ -615,4 +664,50 @@ span {
     margin-right: 8px;
     width: 20px;
     height: 20px;
+}
+/* Контейнер для формы */
+.login-container {
+    position: relative;
+}
+.relative {
+    position: relative;
+}
+
+/* Затемняем и делаем эффект skeleton loader для формы */
+.loading-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.2); /* Серый прозрачный фон */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+}
+
+/* Skeleton animation */
+.skeleton {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, rgba(0, 0, 0, 0.1) 25%, rgba(0, 0, 0, 0.15) 50%, rgba(0, 0, 0, 0.1) 75%);
+    background-size: 200% 100%;
+    animation: skeleton-loading 1.5s infinite;
+}
+
+@keyframes skeleton-loading {
+    0% {
+        background-position: 200% 0;
+    }
+    100% {
+        background-position: -200% 0;
+    }
+}
+.card__days {
+    margin-top: 20px;
+}
+.card__dayItem {
+    font-weight: 700;
+    color: $primary-color;
 }
