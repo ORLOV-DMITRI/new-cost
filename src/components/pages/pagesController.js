@@ -8,9 +8,6 @@ export const PagesController = {
     init() {
         this.view.renderAllPage();
         this.changePages()
-        window.addEventListener('popstate', () => {
-            this.view.renderAllPage();
-        });
     },
     
     updateForm() {
@@ -21,14 +18,20 @@ export const PagesController = {
         this.view.routeBtns.forEach(btn => {
             btn.addEventListener('click', () => {
                 let token = Cookies.get('token');
-                if (!token) {
-                    history.pushState({page: 'auth'}, "", `${this.basePath}/auth`);
-                } else {
-                    history.pushState({page: btn.id}, "", `${this.basePath}/${btn.id}`);
-                }
-             
+                this.view.pages.forEach(page => {
+                    page.classList.remove('active')
+                    if (!token) {
+                        if(page.classList.contains('logIn')) {
+                            page.classList.add('active')
+                        }
+                    } else {
+                        if(page.classList.contains(btn.id)) {
+                            page.classList.add('active')
+                        }
+                    }
+                })
+              
                 if(btn.classList.contains('newCategory')) {
-                    console.log(btn)
                     formController.updateMode('create')
                 }
                 this.view.renderAllPage();

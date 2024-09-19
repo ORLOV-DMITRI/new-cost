@@ -1,4 +1,6 @@
-const url = 'http://localhost:8000/api'
+const url1 = 'http://localhost:8000/api'
+const url = 'https://orlov-finance.ru/new-cost/api'
+
 export const api = {
     add: `${url}/category/update`,
     auth: `${url}/user/auth`,

@@ -12,10 +12,8 @@ export const PagesView = {
 
 
     renderAllPage() {
-        const route = this.getCurrentRoute();
-        const pageClass = routes[route] || 'home';
         this.pages.forEach(page => {
-            page.classList.toggle('hidden', !page.classList.contains(pageClass));
+            page.classList.toggle('hidden', !page.classList.contains('active'));
         });
     },
     renderUpdateForm() {
